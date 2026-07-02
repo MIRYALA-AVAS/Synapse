@@ -29,7 +29,7 @@ const signToken = (user) =>
 const setAuthCookie = (res, token, maxAge = COOKIE_MAX_AGE) => {
   res.cookie('token', token, {
     httpOnly: true,
-    sameSite: 'strict',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
     secure: process.env.NODE_ENV === 'production',
     maxAge,
   });
