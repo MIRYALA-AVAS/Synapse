@@ -37,19 +37,19 @@ app.use(express.json({ limit: '10kb' }));
 
 const isDev = process.env.NODE_ENV !== 'production';
 
-// Global rate limit — relaxed in dev to avoid hitting limits during local testing
+// Global rate limiting
 app.use(
   '/api',
   rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: isDev ? 1000 : 100,
+    max: isDev ? 1000 : 500,
     standardHeaders: true,
     legacyHeaders: false,
     message: { status: 'error', message: 'Too many requests, please try again later.', code: 'RATE_LIMIT' },
   })
 );
 
-// Stricter limit on auth endpoints — 10 req/15 min in prod, relaxed in dev
+// Stricter rate limit on auth endpoints — 10 req/15 min in production
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: isDev ? 100 : 10,
