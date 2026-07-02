@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, Zap } from 'lucide-react';
+import { Zap } from 'lucide-react';
 import toast from 'react-hot-toast';
 import api from '../api/axios';
 import { useAuth } from '../context/AuthContext';
@@ -28,37 +28,27 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0D0D1A] px-4">
-
-      {/* Ambient blobs */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-violet-700 opacity-30 blur-3xl" />
-        <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-indigo-600 opacity-25 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-800 opacity-20 blur-2xl" />
-      </div>
-
-      {/* Glass card */}
-      <div className="relative w-full max-w-sm rounded-2xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl">
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
+      <div className="w-full max-w-sm">
 
         {/* Logo */}
-        <div className="mb-8 flex flex-col items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-600 shadow-lg shadow-violet-500/40">
-            <Zap size={24} className="text-white" fill="white" />
+        <div className="mb-8 flex flex-col items-center gap-2">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-600">
+            <Zap size={22} className="text-white" fill="white" />
           </div>
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-white">Welcome back</h1>
-            <p className="mt-1 text-sm text-white/50">Sign in to Synapse</p>
-          </div>
+          <h1 className="text-2xl font-bold text-gray-900">Synapse</h1>
+          <p className="text-sm text-gray-500">Sign in to your account</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Email */}
-          <div>
-            <label htmlFor="email" className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-white/50">
-              Email
-            </label>
-            <div className="relative">
-              <Mail size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" />
+        {/* Card */}
+        <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
+          <form onSubmit={handleSubmit} className="space-y-5">
+
+            {/* Email */}
+            <div>
+              <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-gray-700">
+                Email
+              </label>
               <input
                 id="email"
                 name="email"
@@ -68,18 +58,15 @@ export default function LoginPage() {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="you@student.nitw.ac.in"
-                className="w-full rounded-xl border border-white/10 bg-white/5 py-2.5 pl-9 pr-3 text-sm text-white placeholder-white/20 outline-none transition focus:border-violet-500 focus:bg-white/10 focus:ring-1 focus:ring-violet-500"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-violet-500 focus:ring-1 focus:ring-violet-500"
               />
             </div>
-          </div>
 
-          {/* Password */}
-          <div>
-            <label htmlFor="password" className="mb-1.5 block text-xs font-medium uppercase tracking-wide text-white/50">
-              Password
-            </label>
-            <div className="relative">
-              <Lock size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30" />
+            {/* Password */}
+            <div>
+              <label htmlFor="password" className="mb-1.5 block text-sm font-medium text-gray-700">
+                Password
+              </label>
               <input
                 id="password"
                 name="password"
@@ -89,24 +76,24 @@ export default function LoginPage() {
                 value={form.password}
                 onChange={handleChange}
                 placeholder="••••••••"
-                className="w-full rounded-xl border border-white/10 bg-white/5 py-2.5 pl-9 pr-3 text-sm text-white placeholder-white/20 outline-none transition focus:border-violet-500 focus:bg-white/10 focus:ring-1 focus:ring-violet-500"
+                className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none transition focus:border-violet-500 focus:ring-1 focus:ring-violet-500"
               />
             </div>
-          </div>
 
-          {/* Submit */}
-          <button
-            type="submit"
-            disabled={submitting}
-            className="mt-2 w-full rounded-xl bg-violet-600 py-2.5 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 transition hover:bg-violet-500 hover:shadow-violet-500/50 disabled:opacity-50"
-          >
-            {submitting ? 'Signing in…' : 'Sign in'}
-          </button>
-        </form>
+            {/* Submit */}
+            <button
+              type="submit"
+              disabled={submitting}
+              className="w-full rounded-lg bg-violet-600 py-2.5 text-sm font-semibold text-white transition hover:bg-violet-700 disabled:opacity-50"
+            >
+              {submitting ? 'Signing in…' : 'Sign in'}
+            </button>
+          </form>
+        </div>
 
-        <p className="mt-6 text-center text-sm text-white/40">
+        <p className="mt-5 text-center text-sm text-gray-500">
           No account?{' '}
-          <Link to="/register" className="font-medium text-violet-400 hover:text-violet-300 hover:underline">
+          <Link to="/register" className="font-medium text-violet-600 hover:underline">
             Register
           </Link>
         </p>
