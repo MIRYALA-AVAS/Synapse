@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { MessageSquare, TrendingUp, Hash, Mail, BookOpen, Bell, LogOut } from 'lucide-react';
+import { MessageSquare, TrendingUp, Hash, Mail, BookOpen, Bell, LogOut, User } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useNotif } from '../../context/NotifContext';
 import Avatar from '../common/Avatar';

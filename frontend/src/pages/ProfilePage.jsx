@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Edit2, Mail } from 'lucide-react';
+import { Edit2, Mail, LogOut } from 'lucide-react';
 import toast from 'react-hot-toast';
 import api from '../api/axios';
 import { useAuth } from '../context/AuthContext';
@@ -12,8 +12,13 @@ import EmptyState from '../components/common/EmptyState';
 
 export default function ProfilePage() {
   const { userId } = useParams();
-  const { user: me } = useAuth();
+  const { user: me, logout } = useAuth();
   const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate('/login');
+  };
 
   const [profile, setProfile] = useState(null);
   const [stats, setStats] = useState(null);
@@ -85,13 +90,22 @@ export default function ProfilePage() {
             </button>
           )}
           {isOwn && (
-            <Link
-              to="/profile/edit"
-              className="flex items-center gap-1.5 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
-            >
-              <Edit2 size={14} />
-              Edit
-            </Link>
+            <div className="flex gap-2">
+              <Link
+                to="/profile/edit"
+                className="flex items-center gap-1.5 rounded-lg border border-gray-300 px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              >
+                <Edit2 size={14} />
+                Edit
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-2 text-sm font-medium text-red-500 hover:bg-red-50 md:hidden"
+              >
+                <LogOut size={14} />
+                Logout
+              </button>
+            </div>
           )}
         </div>
       </div>

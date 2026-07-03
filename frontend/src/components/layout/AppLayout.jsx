@@ -1,4 +1,6 @@
 import { Outlet, NavLink } from 'react-router-dom';
+import { User } from 'lucide-react';
+import { useAuth } from '../../context/AuthContext';
 import { useNotif } from '../../context/NotifContext';
 import Sidebar, { NAV_LINKS } from './Sidebar';
 
@@ -9,6 +11,7 @@ const mobileItemClass = ({ isActive }) =>
 
 function MobileTabBar() {
   const { unreadCount } = useNotif();
+  const { user } = useAuth();
   const mobileLinks = NAV_LINKS.filter((link) => link.mobile);
 
   return (
@@ -26,6 +29,10 @@ function MobileTabBar() {
           {label}
         </NavLink>
       ))}
+      <NavLink to={`/profile/${user?._id}`} className={mobileItemClass}>
+        <User size={20} />
+        Profile
+      </NavLink>
     </nav>
   );
 }
