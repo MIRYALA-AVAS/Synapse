@@ -2,7 +2,33 @@
 
 A full-stack campus social platform — forum, group spaces, direct messaging, and real-time notifications — built for college students.
 
+## Live Demo
 
+| | URL |
+|---|---|
+| Frontend | https://synapse-lovat.vercel.app |
+| Backend API | https://synapse-trhz.onrender.com |
+
+> **Note:** The backend is hosted on Render's free tier and may take 30–60 seconds to wake up after a period of inactivity.
+
+### Demo Credentials
+
+| Name | Email | Password |
+|---|---|---|
+| Ashok | ashok@student.nitw.ac.in | Demo1234 |
+| Ravi | ravi@student.nitw.ac.in | Demo1234 |
+| Suresh | suresh@student.nitw.ac.in | Demo1234 |
+| Ramesh | ramesh@student.nitw.ac.in | Demo1234 |
+| Priya | priya@student.nitw.ac.in | Demo1234 |
+
+## Deployment
+
+| Service | Platform | Config |
+|---|---|---|
+| Frontend | Vercel | Root dir: `frontend`, env: `VITE_API_URL` |
+| Backend | Render | Root dir: `backend`, start: `node server.js` |
+| Database | MongoDB Atlas | Free tier M0 cluster |
+| Media | Cloudinary | Free tier |
 
 ## Features
 
