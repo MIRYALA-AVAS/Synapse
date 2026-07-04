@@ -31,9 +31,7 @@ export default function Sidebar() {
   return (
     <aside className="hidden md:flex md:fixed md:inset-y-0 md:left-0 md:w-60 md:flex-col bg-sidebar text-white">
       <div className="flex items-center gap-2 px-4 h-16 shrink-0">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-600 font-bold">
-          S
-        </div>
+        <img src="/src/assets/logo.png" alt="Synapse" className="h-8 w-8 rounded-lg object-cover" />
         <span className="text-base font-semibold">Synapse</span>
       </div>
 

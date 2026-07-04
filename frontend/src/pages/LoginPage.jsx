@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Zap } from 'lucide-react';
+import logo from '../assets/logo.png';
 import toast from 'react-hot-toast';
 import api from '../api/axios';
 import { useAuth } from '../context/AuthContext';
@@ -33,9 +33,7 @@ export default function LoginPage() {
 
         {/* Logo */}
         <div className="mb-8 flex flex-col items-center gap-2">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-600">
-            <Zap size={22} className="text-white" fill="white" />
-          </div>
+          <img src={logo} alt="Synapse" className="h-11 w-11 rounded-xl object-cover" />
           <h1 className="text-2xl font-bold text-gray-900">Synapse</h1>
           <p className="text-sm text-gray-500">Sign in to your account</p>
         </div>
