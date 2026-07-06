@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { MessageSquare, TrendingUp, Hash, Mail, BookOpen, Bell, LogOut, User } from 'lucide-react';
+import logo from '../../assets/logo.png';
 import { useAuth } from '../../context/AuthContext';
 import { useNotif } from '../../context/NotifContext';
 import Avatar from '../common/Avatar';
@@ -31,7 +32,7 @@ export default function Sidebar() {
   return (
     <aside className="hidden md:flex md:fixed md:inset-y-0 md:left-0 md:w-60 md:flex-col bg-sidebar text-white">
       <div className="flex items-center gap-2 px-4 h-16 shrink-0">
-        <img src="/src/assets/logo.png" alt="Synapse" className="h-8 w-8 rounded-lg object-cover" />
+        <img src={logo} alt="Synapse" className="h-8 w-8 rounded-lg object-cover" />
         <span className="text-base font-semibold">Synapse</span>
       </div>
 
